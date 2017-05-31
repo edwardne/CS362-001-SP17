@@ -26,9 +26,9 @@ public class TimeTableTest {
 		 CalDay cal = new CalDay((GregorianCalendar)rightnow);
 		 int startHour=13;
 		 int startMinute=30;
-		 int startDay=28;
-		 int startMonth=4;
-		 int startYear=2017;
+		 int startDay=thisDay;
+		 int startMonth=thisMonth;
+		 int startYear=thisYear;
 		 String title="Birthday Party";
 		 String description="This is my birthday party.";
 		 //Construct a new Appointment object with the initial data

@@ -84,6 +84,10 @@ public class CalDayTest {
 		cal.addAppt(appt3);
 		cal.addAppt(appt4);
 		 cal.toString();
+		 cal.valid = false;
+		 cal.addAppt(appt);
+		 assertEquals(null, cal.iterator());
+		 assertEquals("", cal.toString());
 		cal.appts = null;
 		cal.valid = false;
 		assertEquals(null, cal.iterator());
@@ -96,6 +100,7 @@ public class CalDayTest {
 
 
 
+
 	 }
-	
+
 }
