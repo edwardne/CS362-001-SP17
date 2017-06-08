@@ -57,6 +57,7 @@ public class UrlValidatorTest extends TestCase {
        assertEquals(false, urlVal2.isValid("file://.com"));
        assertEquals(false, urlVal3.isValid("http://www.amazon.com/foo.html#bar"));
 
+       assertFalse(urlVal.isValid("http://www.amazon.com/?") );
 	   
    }
    
