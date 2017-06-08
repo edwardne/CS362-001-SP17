@@ -40,16 +40,25 @@ public class UrlValidatorTest extends TestCase {
    
    public void testManualTest()
    {
-	   UrlValidator urlVal = new UrlValidator(null, null, UrlValidator.ALLOW_ALL_SCHEMES);
-	   System.out.println(urlVal.isValid("http://www.amazon.com"));
-	   System.out.println(urlVal.isValid(null));
-	   System.out.println(urlVal.isValid(""));
-	   System.out.println(urlVal.isValid("hi"));
+       String[] schemes = {"http","https","file"};
+       UrlValidator urlVal = new UrlValidator(null, null, UrlValidator.ALLOW_ALL_SCHEMES);
+       UrlValidator urlVal2 = new UrlValidator(schemes, null, UrlValidator.ALLOW_2_SLASHES);
+       UrlValidator urlVal3 = new UrlValidator(null, null, UrlValidator.NO_FRAGMENTS);
+
+       assertEquals(true, urlVal.isValid("http://www.amazon.com"));
+       assertEquals(false, urlVal.isValid(null));
+       assertEquals(false, urlVal.isValid(""));
+       assertEquals(false, urlVal.isValid("hi"));
+       assertEquals(false, urlVal.isValid("http:///"));
+       assertEquals(false, urlVal.isValid("http://www.amazon.com//"));
+
+       assertEquals(false, urlVal2.isValid("http2://www.amazon.com"));
+       assertEquals(true, urlVal2.isValid("file://"));
+       assertEquals(false, urlVal2.isValid("file://.com"));
+       assertEquals(false, urlVal3.isValid("http://www.amazon.com/foo.html#bar"));
 
 	   
-	   
    }
-   
    
    public void testYourFirstPartition()
    {
