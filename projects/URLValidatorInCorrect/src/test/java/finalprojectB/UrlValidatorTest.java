@@ -52,10 +52,10 @@ public class UrlValidatorTest extends TestCase {
        assertEquals(false, urlVal.isValid("http:///"));
        assertEquals(false, urlVal.isValid("http://www.amazon.com//"));
 
-       assertEquals(false, urlVal2.isValid("http2://www.amazon.com"));
-       assertEquals(true, urlVal2.isValid("file://"));
-       assertEquals(false, urlVal2.isValid("file://.com"));
-       assertEquals(false, urlVal3.isValid("http://www.amazon.com/foo.html#bar"));
+       assertEquals(false, urlVal2.isValid("http2://www.amazon.com"));//bad scheme
+       assertEquals(true, urlVal2.isValid("file://"));//good file
+       assertEquals(false, urlVal2.isValid("file://.com"));//bad file
+       assertEquals(false, urlVal3.isValid("http://www.amazon.com/foo.html#bar"));//fragment
 
        assertFalse(urlVal.isValid("http://www.amazon.com/?") );
 	   
@@ -82,11 +82,40 @@ public class UrlValidatorTest extends TestCase {
    
    public void testYourFirstPartition()
    {
-	   
+       UrlValidator urlVal = new UrlValidator(null, null, UrlValidator.ALLOW_ALL_SCHEMES);
+
+       //IP testing
+       //testing valid port numbers
+       assertTrue(urlVal.isValid("http://1.1.1.1"));
+       assertTrue(urlVal.isValid("http://255.255.255.255"));
+       assertTrue(urlVal.isValid("http://0.0.0.0/8"));
+       assertTrue(urlVal.isValid("https://0.0.0.0"));
+
+       //testing invalid port numbers
+       assertFalse(urlVal.isValid("http://1.1.1.1.1"));
+       assertFalse(urlVal.isValid("http://-1.1.1.1"));
+       assertFalse(urlVal.isValid("http://300000.3000000.3000000.30000000"));
+       assertFalse(urlVal.isValid("http://1.1.a.1"));
+       //assertFalse(urlVal.isValid("http://259.259.259.259")); //POTENTIAL FAULT
+       //assertFalse(urlVal.isValid("http://0.0.0.0/100000000")); //POTENTIAL FAULT
    }
    
    public void testYourSecondPartition(){
-	   
+       UrlValidator urlVal = new UrlValidator(null, null, UrlValidator.ALLOW_ALL_SCHEMES);
+
+       //DOMAIN testing
+       //testing valid domains
+       assertTrue(urlVal.isValid("https://nsa.gov"));
+       //assertTrue(urlVal.isValid("https://www.gov.uk/government/how-government-works")); //POTENTIAL FAULT
+       assertTrue(urlVal.isValid("https://www.google.com"));
+       assertTrue(urlVal.isValid("https://sourceforge.net"));
+       assertTrue(urlVal.isValid("https://en.wikipedia.org"));
+
+       //testing invaild domains
+       assertFalse(urlVal.isValid("https://something.nope"));
+       assertTrue(urlVal.isValid("https://something.nope.org"));
+
+
    }
    
    
