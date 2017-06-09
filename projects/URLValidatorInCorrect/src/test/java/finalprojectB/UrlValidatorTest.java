@@ -98,6 +98,7 @@ public class UrlValidatorTest extends TestCase {
        assertFalse(urlVal.isValid("http://1.1.a.1"));
        //assertFalse(urlVal.isValid("http://259.259.259.259")); //POTENTIAL FAULT
        //assertFalse(urlVal.isValid("http://0.0.0.0/100000000")); //POTENTIAL FAULT
+       //assertFalse(urlVal.isValid("https://0.0.0.0/-1")); //POTENTIAL FAULT
    }
    
    public void testYourSecondPartition(){
@@ -110,11 +111,13 @@ public class UrlValidatorTest extends TestCase {
        assertTrue(urlVal.isValid("https://www.google.com"));
        assertTrue(urlVal.isValid("https://sourceforge.net"));
        assertTrue(urlVal.isValid("https://en.wikipedia.org"));
+       assertTrue(urlVal.isValid("https://mail.google.com/mail/u/0/#inbox"));
 
        //testing invaild domains
        assertFalse(urlVal.isValid("https://something.nope"));
        assertTrue(urlVal.isValid("https://something.nope.org"));
-
+       //assertFalse(urlVal.isValid("abc://amazon.com")); //POTENTIAL FAULT
+       assertFalse(urlVal.isValid("http:/amazon.com"));
 
    }
    
