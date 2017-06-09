@@ -59,6 +59,25 @@ public class UrlValidatorTest extends TestCase {
 
        assertFalse(urlVal.isValid("http://www.amazon.com/?") );
 	   
+	//ADDITIONAL TESTING BASED ON WHAT "SHOULD" BE RIGHT
+       //IP testing
+       assertTrue(urlVal.isValid("http://1.1.1.1"));
+       assertFalse(urlVal.isValid("http://1.1.1.1.1"));
+       assertFalse(urlVal.isValid("http://-1.1.1.1"));
+       assertTrue(urlVal.isValid("http://255.255.255.255"));
+       assertFalse(urlVal.isValid("http://300000.3000000.3000000.30000000"));
+       assertTrue(urlVal.isValid("http://0.0.0.0/8"));
+       //assertFalse(urlVal.isValid("http://259.259.259.259")); //POTENTIAL FAULT
+       //assertFalse(urlVal.isValid("http://0.0.0.0/100000000")); //POTENTIAL FAULT
+       assertTrue(urlVal.isValid("https://0.0.0.0"));
+       assertFalse(urlVal.isValid("http://1.1.a.1"));
+
+       //DOMAIN testing
+       assertTrue(urlVal.isValid("https://nsa.gov"));
+       //assertTrue(urlVal.isValid("https://www.gov.uk/government/how-government-works")); //POTENTIAL FAULT
+       //assertTrue(urlVal.isValid("https://www.google.com/search?q=how")); //POTENTIAL FAULT
+       //assertTrue(urlVal.isValid("https://www.google.com/search?q=maximum+value+for+an+ip+block&ie=utf-8&oe=utf-8#q=OSU+location")); //POTENTIAL FAULT
+	   
    }
    
    public void testYourFirstPartition()
