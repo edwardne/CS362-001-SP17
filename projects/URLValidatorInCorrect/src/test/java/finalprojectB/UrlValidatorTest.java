@@ -17,7 +17,7 @@
 package finalprojectB;
 
 import junit.framework.TestCase;
-
+import java.util.Random;
 
 
 
@@ -115,10 +115,70 @@ public class UrlValidatorTest extends TestCase {
    
    public void testIsValid()
    {
-	   for(int i = 0;i<10000;i++)
+       UrlValidator urlVal = new UrlValidator(null, null, UrlValidator.ALLOW_ALL_SCHEMES);
+
+       String head1 = "http://";
+       String head2 = "https://";
+       String head3 = "";
+
+       String body1 = "abc";
+       String body2 = "0.0.0.0";
+       String body3 = "";
+
+       String dot1 = ".com";
+       String dot2 = ".net";
+       String dot3 = ".gov";
+
+       String tail1 = "/10/";
+       String tail2 = "/search?=abc/";
+       String tail3 = "/#abc/";
+
+       long randomseed =10;
+       Random random = new Random(randomseed);
+
+	for(int i = 0;i<10000;i++)
 	   {
-		   
-	   }
+           String conc = "";
+
+           int l = random.nextInt(2);
+           if(l == 0){
+               conc += head1;
+           }else if(l == 1){
+               conc += head2;
+           }else if(l == 2){
+               conc += head3;
+           }
+
+           int m = random.nextInt(2);
+           if(m == 0){
+               conc += body1;
+           }else if(m == 1){
+               conc += body2;
+           }else if(m == 2){
+               conc += body3;
+           }
+
+           int n = random.nextInt(3);
+           if(n == 0){
+               conc += dot1;
+           }else if(n == 1){
+               conc += dot2;
+           }else if(n == 2){
+               conc += dot3;
+           }
+
+           for(int k = 0; k < 10; k++){
+               int o = random.nextInt(3);
+               if(o == 0){
+                   conc += tail1;
+               }else if(o == 1){
+                   conc += tail2;
+               }else if(o == 2){
+                   conc += tail3;
+               }
+           }
+           urlVal.isValid(conc);
+	}
    }
    
    public void testAnyOtherUnitTest()
