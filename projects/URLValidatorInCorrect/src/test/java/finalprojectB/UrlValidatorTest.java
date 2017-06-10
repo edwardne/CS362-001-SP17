@@ -45,39 +45,27 @@ public class UrlValidatorTest extends TestCase {
        UrlValidator urlVal2 = new UrlValidator(schemes, null, UrlValidator.ALLOW_2_SLASHES);
        UrlValidator urlVal3 = new UrlValidator(null, null, UrlValidator.NO_FRAGMENTS);
 
-       assertEquals(true, urlVal.isValid("http://www.amazon.com"));
-       assertEquals(false, urlVal.isValid(null));
-       assertEquals(false, urlVal.isValid(""));
-       assertEquals(false, urlVal.isValid("hi"));
-       assertEquals(false, urlVal.isValid("http:///"));
-       assertEquals(false, urlVal.isValid("http://www.amazon.com//"));
+       assertTrue(urlVal.isValid("http://www.amazon.com"));
 
-       assertEquals(false, urlVal2.isValid("http2://www.amazon.com"));//bad scheme
-       assertEquals(true, urlVal2.isValid("file://"));//good file
-       assertEquals(false, urlVal2.isValid("file://.com"));//bad file
-       assertEquals(false, urlVal3.isValid("http://www.amazon.com/foo.html#bar"));//fragment
+       assertFalse(urlVal.isValid(null));
+       assertFalse(urlVal.isValid(""));
+       assertFalse(urlVal.isValid("hi"));
 
-       assertFalse(urlVal.isValid("http://www.amazon.com/?") );
-	   
-	//ADDITIONAL TESTING BASED ON WHAT "SHOULD" BE RIGHT
-       //IP testing
-       assertTrue(urlVal.isValid("http://1.1.1.1"));
-       assertFalse(urlVal.isValid("http://1.1.1.1.1"));
-       assertFalse(urlVal.isValid("http://-1.1.1.1"));
-       assertTrue(urlVal.isValid("http://255.255.255.255"));
-       assertFalse(urlVal.isValid("http://300000.3000000.3000000.30000000"));
-       assertTrue(urlVal.isValid("http://0.0.0.0/8"));
-       //assertFalse(urlVal.isValid("http://259.259.259.259")); //POTENTIAL FAULT
-       //assertFalse(urlVal.isValid("http://0.0.0.0/100000000")); //POTENTIAL FAULT
-       assertTrue(urlVal.isValid("https://0.0.0.0"));
-       assertFalse(urlVal.isValid("http://1.1.a.1"));
+       assertFalse(urlVal.isValid("http:///"));//too many slashes
+       assertFalse(urlVal.isValid("http://www.amazon.com//"));//too many slashes
+       assertFalse(urlVal.isValid("http:/amazon.com"));//too few slashes
 
-       //DOMAIN testing
-       assertTrue(urlVal.isValid("https://nsa.gov"));
-       //assertTrue(urlVal.isValid("https://www.gov.uk/government/how-government-works")); //POTENTIAL FAULT
-       //assertTrue(urlVal.isValid("https://www.google.com/search?q=how")); //POTENTIAL FAULT
-       //assertTrue(urlVal.isValid("https://www.google.com/search?q=maximum+value+for+an+ip+block&ie=utf-8&oe=utf-8#q=OSU+location")); //POTENTIAL FAULT
-	   
+       assertTrue(urlVal.isValid("http2://www.amazon.com"));
+       assertFalse(urlVal2.isValid("http2://www.amazon.com"));//invaild scheme with set schemes enabled
+
+       assertTrue(urlVal2.isValid("file://"));//vaild file
+       assertFalse(urlVal2.isValid("file://.com"));//invalid file
+
+       assertFalse(urlVal3.isValid("http://www.amazon.com/foo.html#bar"));//fragment with fragment disabled
+       assertTrue(urlVal.isValid("http://www.amazon.com/foo.html#bar"));//fragment with fragment enabled
+
+       assertFalse(urlVal.isValid("http://www.amazon.com/?"));
+
    }
    
    public void testYourFirstPartition()
@@ -107,17 +95,21 @@ public class UrlValidatorTest extends TestCase {
        //DOMAIN testing
        //testing valid domains
        assertTrue(urlVal.isValid("https://nsa.gov"));
-       //assertTrue(urlVal.isValid("https://www.gov.uk/government/how-government-works")); //POTENTIAL FAULT
        assertTrue(urlVal.isValid("https://www.google.com"));
        assertTrue(urlVal.isValid("https://sourceforge.net"));
        assertTrue(urlVal.isValid("https://en.wikipedia.org"));
+       assertTrue(urlVal.isValid("http://oregonstate.edu/"));
        assertTrue(urlVal.isValid("https://mail.google.com/mail/u/0/#inbox"));
+       //assertTrue(urlVal.isValid("https://www.gov.uk/government/how-government-works")); //POTENTIAL FAULT
+       //assertTrue(urlVal.isValid("https://www.google.com/search?q=how")); //POTENTIAL FAULT
+       //assertTrue(urlVal.isValid("https://www.google.com/search?q=maximum+value+for+an+ip+block&ie=utf-8&oe=utf-8#q=OSU+location")); //POTENTIAL FAULT
+
 
        //testing invaild domains
        assertFalse(urlVal.isValid("https://something.nope"));
-       assertTrue(urlVal.isValid("https://something.nope.org"));
+       assertFalse(urlVal.isValid("https://something.not/this/one/#either"));
+       assertFalse(urlVal.isValid("https://something.or/this_one.jpg"));
        //assertFalse(urlVal.isValid("abc://amazon.com")); //POTENTIAL FAULT
-       assertFalse(urlVal.isValid("http:/amazon.com"));
 
    }
    
