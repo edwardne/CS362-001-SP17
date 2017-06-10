@@ -159,7 +159,7 @@ public class UrlValidatorTest extends TestCase {
                conc += body3;
            }
 
-           int n = random.nextInt(2);
+           int n = random.nextInt(3);
            if(n == 0){
                conc += dot1;
            }else if(n == 1){
@@ -168,15 +168,16 @@ public class UrlValidatorTest extends TestCase {
                conc += dot3;
            }
 
-           int o = random.nextInt(2);
-           if(o == 0){
-               conc += tail1;
-           }else if(o == 1){
-               conc += tail2;
-           }else if(o == 2){
-               conc += tail3;
+           for(int k = 0; k < 10; k++){
+               int o = random.nextInt(3);
+               if(o == 0){
+                   conc += tail1;
+               }else if(o == 1){
+                   conc += tail2;
+               }else if(o == 2){
+                   conc += tail3;
+               }
            }
-
            urlVal.isValid(conc);
 	}
    }
