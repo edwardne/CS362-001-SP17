@@ -11,7 +11,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/URLValidatorInCorrect$finalprojectB_in_URLValidatorInCorrect.coverage" NAME="finalprojectB in URLValidatorInCorrect Coverage Results" MODIFIED="1497066603695" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/URLValidatorInCorrect$finalprojectB_in_URLValidatorInCorrect.coverage" NAME="finalprojectB in URLValidatorInCorrect Coverage Results" MODIFIED="1497159109072" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>finalprojectB.*</FILTER>
     </SUITE>
   </component>
@@ -24,9 +24,13 @@
       <file leaf-file-name="UrlValidatorTest.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/finalprojectB/UrlValidatorTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="197">
-              <caret line="103" column="54" lean-forward="false" selection-start-line="103" selection-start-column="54" selection-end-line="103" selection-end-column="86" />
-              <folding />
+            <state relative-caret-position="-490">
+              <caret line="279" column="42" lean-forward="true" selection-start-line="279" selection-start-column="42" selection-end-line="279" selection-end-column="42" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1292#1293#0" expanded="true" />
+                <element signature="e#1320#1321#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -44,8 +48,8 @@
       <file leaf-file-name="RegexValidator.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/finalprojectB/RegexValidator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="392">
-              <caret line="42" column="30" lean-forward="false" selection-start-line="42" selection-start-column="24" selection-end-line="42" selection-end-column="30" />
+            <state relative-caret-position="141">
+              <caret line="50" column="27" lean-forward="false" selection-start-line="50" selection-start-column="24" selection-end-line="50" selection-end-column="27" />
               <folding />
             </state>
           </provider>
@@ -54,8 +58,8 @@
       <file leaf-file-name="InetAddressValidator.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/finalprojectB/InetAddressValidator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="131">
-              <caret line="33" column="13" lean-forward="false" selection-start-line="33" selection-start-column="13" selection-end-line="33" selection-end-column="13" />
+            <state relative-caret-position="85">
+              <caret line="5" column="59" lean-forward="false" selection-start-line="5" selection-start-column="56" selection-end-line="5" selection-end-column="59" />
               <folding />
             </state>
           </provider>
@@ -64,8 +68,8 @@
       <file leaf-file-name="DomainValidator.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/finalprojectB/DomainValidator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="131">
-              <caret line="62" column="13" lean-forward="false" selection-start-line="62" selection-start-column="13" selection-end-line="62" selection-end-column="13" />
+            <state relative-caret-position="34">
+              <caret line="225" column="8" lean-forward="false" selection-start-line="225" selection-start-column="8" selection-end-line="244" selection-end-column="14" />
               <folding />
             </state>
           </provider>
@@ -74,8 +78,8 @@
       <file leaf-file-name="UrlValidator.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/finalprojectB/UrlValidator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="141">
-              <caret line="12" column="62" lean-forward="false" selection-start-line="12" selection-start-column="62" selection-end-line="12" selection-end-column="62" />
+            <state relative-caret-position="85">
+              <caret line="5" column="59" lean-forward="false" selection-start-line="5" selection-start-column="56" selection-end-line="5" selection-end-column="59" />
               <folding />
             </state>
           </provider>
@@ -86,6 +90,7 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>test</find>
+      <find>com</find>
       <find>testObjects</find>
       <find>Result</find>
     </findStrings>
@@ -451,34 +456,34 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="finalprojectB_in_URLValidatorInCorrect - 2017.06.09 at 17h 34m 59s.xml">
+    <history-entry file="finalprojectB_in_URLValidatorInCorrect - 2017.06.10 at 22h 17m 43s.xml">
       <configuration name="finalprojectB in URLValidatorInCorrect" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="finalprojectB_in_URLValidatorInCorrect - 2017.06.09 at 18h 09m 36s.xml">
+    <history-entry file="finalprojectB_in_URLValidatorInCorrect - 2017.06.10 at 22h 20m 42s.xml">
       <configuration name="finalprojectB in URLValidatorInCorrect" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="finalprojectB_in_URLValidatorInCorrect - 2017.06.09 at 18h 32m 29s.xml">
+    <history-entry file="finalprojectB_in_URLValidatorInCorrect - 2017.06.10 at 22h 21m 29s.xml">
       <configuration name="finalprojectB in URLValidatorInCorrect" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="finalprojectB_in_URLValidatorInCorrect - 2017.06.09 at 18h 35m 11s.xml">
+    <history-entry file="finalprojectB_in_URLValidatorInCorrect - 2017.06.10 at 22h 22m 09s.xml">
       <configuration name="finalprojectB in URLValidatorInCorrect" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="finalprojectB_in_URLValidatorInCorrect - 2017.06.09 at 18h 35m 37s.xml">
+    <history-entry file="finalprojectB_in_URLValidatorInCorrect - 2017.06.10 at 22h 22m 54s.xml">
       <configuration name="finalprojectB in URLValidatorInCorrect" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="finalprojectB_in_URLValidatorInCorrect - 2017.06.09 at 18h 35m 52s.xml">
+    <history-entry file="finalprojectB_in_URLValidatorInCorrect - 2017.06.10 at 22h 23m 02s.xml">
       <configuration name="finalprojectB in URLValidatorInCorrect" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="finalprojectB_in_URLValidatorInCorrect - 2017.06.09 at 18h 36m 20s.xml">
+    <history-entry file="finalprojectB_in_URLValidatorInCorrect - 2017.06.10 at 22h 23m 12s.xml">
       <configuration name="finalprojectB in URLValidatorInCorrect" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="finalprojectB_in_URLValidatorInCorrect - 2017.06.09 at 18h 36m 40s.xml">
+    <history-entry file="finalprojectB_in_URLValidatorInCorrect - 2017.06.10 at 22h 24m 15s.xml">
       <configuration name="finalprojectB in URLValidatorInCorrect" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="finalprojectB_in_URLValidatorInCorrect - 2017.06.09 at 20h 49m 50s.xml">
+    <history-entry file="finalprojectB_in_URLValidatorInCorrect - 2017.06.10 at 22h 26m 23s.xml">
       <configuration name="finalprojectB in URLValidatorInCorrect" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="finalprojectB_in_URLValidatorInCorrect - 2017.06.09 at 20h 50m 05s.xml">
+    <history-entry file="finalprojectB_in_URLValidatorInCorrect - 2017.06.10 at 22h 31m 51s.xml">
       <configuration name="finalprojectB in URLValidatorInCorrect" configurationId="JUnit" />
     </history-entry>
   </component>
@@ -497,7 +502,7 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32893" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.074027605" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Coverage" active="true" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.074027605" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -522,7 +527,22 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-field">
+          <url>file://$PROJECT_DIR$/src/main/java/finalprojectB/ResultPair.java</url>
+          <line>25</line>
+          <properties field="valid" class="finalprojectB.ResultPair" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/finalprojectB/UrlValidatorTest.java</url>
+          <line>311</line>
+          <properties />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="2" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="antWorkspaceConfiguration">
@@ -534,30 +554,42 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1292#1293#0" expanded="true" />
+            <element signature="e#1320#1321#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/finalprojectB/UrlValidator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="59" lean-forward="false" selection-start-line="5" selection-start-column="56" selection-end-line="5" selection-end-column="59" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/finalprojectB/DomainValidator.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/finalprojectB/RegexValidator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="131">
-          <caret line="62" column="13" lean-forward="false" selection-start-line="62" selection-start-column="13" selection-end-line="62" selection-end-column="13" />
+        <state relative-caret-position="141">
+          <caret line="50" column="27" lean-forward="false" selection-start-line="50" selection-start-column="24" selection-end-line="50" selection-end-column="27" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/finalprojectB/InetAddressValidator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="131">
-          <caret line="33" column="13" lean-forward="false" selection-start-line="33" selection-start-column="13" selection-end-line="33" selection-end-column="13" />
+        <state relative-caret-position="85">
+          <caret line="5" column="59" lean-forward="false" selection-start-line="5" selection-start-column="56" selection-end-line="5" selection-end-column="59" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/finalprojectB/UrlValidator.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/finalprojectB/DomainValidator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="141">
-          <caret line="12" column="62" lean-forward="false" selection-start-line="12" selection-start-column="62" selection-end-line="12" selection-end-column="62" />
+        <state relative-caret-position="34">
+          <caret line="225" column="8" lean-forward="false" selection-start-line="225" selection-start-column="8" selection-end-line="244" selection-end-column="14" />
           <folding />
         </state>
       </provider>
@@ -570,19 +602,15 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/finalprojectB/RegexValidator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="392">
-          <caret line="42" column="30" lean-forward="false" selection-start-line="42" selection-start-column="24" selection-end-line="42" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/finalprojectB/UrlValidatorTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="197">
-          <caret line="103" column="54" lean-forward="false" selection-start-line="103" selection-start-column="54" selection-end-line="103" selection-end-column="86" />
-          <folding />
+        <state relative-caret-position="-490">
+          <caret line="279" column="42" lean-forward="true" selection-start-line="279" selection-start-column="42" selection-end-line="279" selection-end-column="42" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1292#1293#0" expanded="true" />
+            <element signature="e#1320#1321#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

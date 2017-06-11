@@ -56,6 +56,9 @@ public class UrlValidatorTest extends TestCase {
        assertTrue(urlVal2.isValid("http://www.amazon.com//"));//two slashes enabled
        assertFalse(urlVal.isValid("http:/amazon.com"));//too few slashes
 
+       assertTrue(urlVal.isValid("http2://www.amazon.com"));
+       assertFalse(urlVal.isValid("2http://www.amazon.com"));
+
        assertFalse(urlVal2.isValid("http2://www.amazon.com"));
        assertFalse(urlVal2.isValid("http2://www.amazon.com"));//invaild scheme with set schemes enabled
 
@@ -79,6 +82,7 @@ public class UrlValidatorTest extends TestCase {
        assertTrue(urlVal.isValid("http://255.255.255.255"));
        assertTrue(urlVal.isValid("http://0.0.0.0/8"));
        assertTrue(urlVal.isValid("https://0.0.0.0"));
+       assertTrue(urlVal.isValid("http://1.1.1.1:8"));
 
        //testing invalid port numbers
        assertFalse(urlVal.isValid("http://1.1.1.1.1"));
@@ -96,6 +100,7 @@ public class UrlValidatorTest extends TestCase {
        //DOMAIN testing
        //testing valid domains
        assertTrue(urlVal.isValid("https://nsa.gov"));
+       assertTrue(urlVal.isValid("https://www.google.com"));
        assertTrue(urlVal.isValid("https://www.google.com"));
        assertTrue(urlVal.isValid("https://sourceforge.net"));
        assertTrue(urlVal.isValid("https://en.wikipedia.org"));
@@ -116,69 +121,194 @@ public class UrlValidatorTest extends TestCase {
    public void testIsValid()
    {
        UrlValidator urlVal = new UrlValidator(null, null, UrlValidator.ALLOW_ALL_SCHEMES);
+       UrlValidator urlVal2 = new UrlValidator(null, null, UrlValidator.NO_FRAGMENTS+UrlValidator.ALLOW_2_SLASHES+UrlValidator.ALLOW_ALL_SCHEMES);
 
-       String head1 = "http://";
-       String head2 = "https://";
-       String head3 = "";
+       ResultPair[] scheme = {new ResultPair("http://", true),
+               new ResultPair("ftp://", true),
+               new ResultPair("http2://", true),
+               new ResultPair("3http://", false),
+               new ResultPair("http:/", false),
+               new ResultPair("http:", false),
+               new ResultPair("http/", false),
+               new ResultPair("://", false),
+               new ResultPair("", false)};
 
-       String body1 = "abc";
-       String body2 = "0.0.0.0";
-       String body3 = "";
+       ResultPair[] authority = {new ResultPair("www.google.com", true),
+               new ResultPair("go.com", true),
+               new ResultPair("go.au", true),
+               new ResultPair("255.com", true),
+               new ResultPair("go.a", false),
+               new ResultPair("go.a1a", false),
+               new ResultPair("go.cc", true),
+               new ResultPair("go.1aa", false),
+               new ResultPair("aaa.", false),
+               new ResultPair(".aaa", false),
+               new ResultPair("aaa", false),
+               new ResultPair("", false)
+       };
 
-       String dot1 = ".com";
-       String dot2 = ".net";
-       String dot3 = ".gov";
 
-       String tail1 = "/10/";
-       String tail2 = "/search?=abc/";
-       String tail3 = "/#abc/";
+       ResultPair[] port = {new ResultPair("1.2.3.4.5", false),
+               new ResultPair("1.2.3.4.", false),
+               new ResultPair("1.2.3", false),
+               new ResultPair(".1.2.3.4", false),
+               new ResultPair("0.0.0.0", true),
+               new ResultPair("255.255.255.255", true),
+               //new ResultPair("256.256.256.256", false)
+       };
+       ResultPair[] portEnd = {new ResultPair(":80", true),
+               //new ResultPair(":65535", true),
+               new ResultPair(":0", true),
+               new ResultPair("", true),
+               new ResultPair(":-1", false),
+               //new ResultPair(":65636", true),
+               new ResultPair(":65a", false)
+       };
+       ResultPair[] path = {new ResultPair("/test1", true),
+               new ResultPair("/t123", true),
+               new ResultPair("/$23", true),
+               new ResultPair("/..", false),
+               new ResultPair("/../", false),
+               new ResultPair("/test1/", true),
+               new ResultPair("", true),
+               new ResultPair("/test1/file", true),
+               new ResultPair("/..//file", false),
+               new ResultPair("/test1//file", false)
+       };
+       //Test allow2slash, noFragment
+       ResultPair[] pathOptions = {new ResultPair("/test1", true),
+               new ResultPair("/t123", true),
+               new ResultPair("/$23", true),
+               new ResultPair("/..", false),
+               new ResultPair("/../", false),
+               new ResultPair("/test1/", true),
+               new ResultPair("/#", false),
+               new ResultPair("", true),
+               new ResultPair("/test1/file", true),
+               new ResultPair("/t123/file", true),
+               new ResultPair("/$23/file", true),
+               new ResultPair("/../file", false),
+               new ResultPair("/..//file", false),
+               new ResultPair("/test1//file", true),
+               new ResultPair("/#/file", false)
+       };
 
-       long randomseed =10;
-       Random random = new Random(randomseed);
+       ResultPair[] query = {//new ResultPair("?action=view", true),
+               //new ResultPair("?action=edit&mode=up", true),
+               new ResultPair("", true)
+       };
+
+       Random random = new Random(System.currentTimeMillis());
 
 	for(int i = 0;i<10000;i++)
 	   {
-           String conc = "";
+           boolean allValid = true;
 
-           int l = random.nextInt(2);
-           if(l == 0){
-               conc += head1;
-           }else if(l == 1){
-               conc += head2;
-           }else if(l == 2){
-               conc += head3;
-           }
+	       String conc = "";
 
-           int m = random.nextInt(2);
-           if(m == 0){
-               conc += body1;
-           }else if(m == 1){
-               conc += body2;
-           }else if(m == 2){
-               conc += body3;
-           }
+           int randScheme = random.nextInt(scheme.length);
+           int randAuth = random.nextInt(authority.length);
+           int randPath= random.nextInt(path.length);
+           int randQuery= random.nextInt(query.length);
 
-           int n = random.nextInt(3);
-           if(n == 0){
-               conc += dot1;
-           }else if(n == 1){
-               conc += dot2;
-           }else if(n == 2){
-               conc += dot3;
-           }
-
-           for(int k = 0; k < 10; k++){
-               int o = random.nextInt(3);
-               if(o == 0){
-                   conc += tail1;
-               }else if(o == 1){
-                   conc += tail2;
-               }else if(o == 2){
-                   conc += tail3;
+           for(int j=0; j < scheme.length; j++)
+           {
+               if(j==randScheme)
+               {
+                   conc +=scheme[j].item;
+                   if(scheme[j].valid== false)
+                   {
+                       allValid = false;
+                       System.out.println("INVAILD HERE " + scheme[j].item);
+                   }
                }
            }
-           urlVal.isValid(conc);
-	}
+           int randPortOption= random.nextInt(2);//choose whether or not to use port number
+           if(randPortOption == 0) {
+               for (int j = 0; j < authority.length; j++) {
+                   if (j == randAuth) {
+                       conc += authority[j].item;
+                       if (authority[j].valid == false) {
+                           allValid = false;
+                           System.out.println("INVAILD HERE " + authority[j].item);
+                       }
+                   }
+               }
+
+           }
+           else {
+               int randPort = random.nextInt(port.length);
+               int randEnd = random.nextInt(portEnd.length);
+               for (int j = 0; j < port.length; j++) {
+                   if (j == randPort) {
+                       conc += port[j].item;
+                       if (port[j].valid == false) {
+                           allValid = false;
+                           System.out.println("INVAILD HERE " + port[j].item);
+                       }
+                   }
+               }
+               for (int j = 0; j < portEnd.length; j++) {
+                   if (j == randEnd) {
+                       conc += portEnd[j].item;
+                       if (portEnd[j].valid == false) {
+                           allValid = false;
+                           System.out.println("INVAILD HERE " + portEnd[j].item);
+                       }
+                   }
+               }
+           }
+           int randOption= random.nextInt(2);//choose wheter or not to test with two slash and fragments enabled
+           if(randOption==0)
+           {
+               for (int j = 0; j < path.length; j++) {
+                   if (j == randPath) {
+                       conc += path[j].item;
+                       if (path[j].valid == false) {
+                           allValid = false;
+                           System.out.println("INVAILD HERE " + path[j].item);
+                       }
+                   }
+               }
+           }
+
+           else
+           {
+               int randOptions = random.nextInt(pathOptions.length);
+
+               for (int j = 0; j < pathOptions.length; j++) {
+                   if (j == randOptions) {
+                       conc += pathOptions[j].item;
+                       if (pathOptions[j].valid == false) {
+                           allValid = false;
+                           System.out.println("INVAILD HERE " + pathOptions[j].item);
+                       }
+                   }
+               }
+           }
+           for(int j=0; j < query.length; j++)
+           {
+               if(j==randQuery)
+               {
+                   conc +=query[j].item;
+                   if(query[j].valid== false)
+                   {
+                       allValid = false;
+                       System.out.println("INVAILD HERE " + query[j].item);
+                   }
+               }
+           }
+           System.out.println(conc);
+           if(randOption==1)
+           {
+               System.out.println("TWO SLASH AND NO FRAGMENTS ALLOWED");
+               assertEquals(allValid, urlVal2.isValid(conc));
+           }
+           else
+           {
+               assertEquals(allValid, urlVal.isValid(conc));
+           }
+	   }
    }
    
    public void testAnyOtherUnitTest()
