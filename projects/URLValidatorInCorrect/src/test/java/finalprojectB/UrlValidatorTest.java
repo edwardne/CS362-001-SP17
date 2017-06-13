@@ -68,8 +68,6 @@ public class UrlValidatorTest extends TestCase {
        assertFalse(urlVal3.isValid("http://www.amazon.com/foo.html#bar"));//fragment with fragment disabled
        assertTrue(urlVal.isValid("http://www.amazon.com/foo.html#bar"));//fragment with fragment enabled
 
-       assertFalse(urlVal.isValid("http://www.amazon.com/?"));
-
    }
    
    public void testYourFirstPartition()
@@ -89,7 +87,7 @@ public class UrlValidatorTest extends TestCase {
        assertFalse(urlVal.isValid("http://-1.1.1.1"));
        assertFalse(urlVal.isValid("http://300000.3000000.3000000.30000000"));
        assertFalse(urlVal.isValid("http://1.1.a.1"));
-       //assertFalse(urlVal.isValid("http://256.256.256.256")); //POTENTIAL FAULT
+       //assertFalse(urlVal.isValid("http://256.256.256.256")); //Bug #2
        //assertFalse(urlVal.isValid("http://0.0.0.0/100000000")); //POTENTIAL FAULT
        //assertFalse(urlVal.isValid("https://0.0.0.0/-1")); //POTENTIAL FAULT
    }
@@ -106,9 +104,10 @@ public class UrlValidatorTest extends TestCase {
        assertTrue(urlVal.isValid("https://en.wikipedia.org"));
        assertTrue(urlVal.isValid("http://oregonstate.edu/"));
        assertTrue(urlVal.isValid("https://mail.google.com/mail/u/0/#inbox"));
-       //assertTrue(urlVal.isValid("https://www.gov.uk/government/how-government-works")); //POTENTIAL FAULT
-       //assertTrue(urlVal.isValid("https://www.google.com/search?q=how")); //POTENTIAL FAULT
+       //assertTrue(urlVal.isValid("https://www.gov.uk/government/how-government-works"));//Bug #1
 
+       assertTrue(urlVal.isValid("http://www.amazon.com/?action=view")); //Bug #3
+       assertFalse(urlVal.isValid("http://www.amazon.com?action=view"));
 
        //testing invaild domains
        assertFalse(urlVal.isValid("https://something.nope"));
@@ -154,7 +153,7 @@ public class UrlValidatorTest extends TestCase {
                new ResultPair(".1.2.3.4", false),
                new ResultPair("0.0.0.0", true),
                new ResultPair("255.255.255.255", true),
-               //new ResultPair("256.256.256.256", false)
+               //new ResultPair("256.256.256.256", false)//Bug #2 again
        };
        ResultPair[] portEnd = {new ResultPair(":80", true),
                //new ResultPair(":65535", true),
@@ -193,8 +192,8 @@ public class UrlValidatorTest extends TestCase {
                new ResultPair("/#/file", false)
        };
 
-       ResultPair[] query = {//new ResultPair("?action=view", true),
-               //new ResultPair("?action=edit&mode=up", true),
+       ResultPair[] query = {//new ResultPair("?action=view", true),//Bug #3 again
+               //new ResultPair("?action=edit&mode=up", true),//Bug #3 again
                new ResultPair("", true)
        };
 
